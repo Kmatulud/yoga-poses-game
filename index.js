@@ -23,7 +23,7 @@ app.get('/', function(req, res) {
 });
 
 //start everything up
-const PORT = process.env.PORT || 3011;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, function () {
     console.log('App started at PORT: ', PORT);
 });
