@@ -8,7 +8,6 @@ const flash = require('express-flash');
 
 const Pool = pg.Pool;
 
-app.engine('handlebars', exphbs());
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
    
