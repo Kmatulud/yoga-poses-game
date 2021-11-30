@@ -4,18 +4,23 @@ const bodyParser = require('body-parser');
 const pg = require('pg');
 
 const app = express();
-const flash = require('express-flash');
 
 const Pool = pg.Pool;
 
-app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
-app.set('view engine', 'handlebars');
-   
 // initialising necessary middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(flash());
 app.use(express.static('public'));
+
+app.engine('handlebars', exphbs.engine({ defaultLayout: 'main' }));
+app.set('view engine', 'handlebars');
+   
+app.get('/', function(req, res) {
+
+	res.render('index', {
+
+	});
+});
 
 //start everything up
 const PORT = process.env.PORT || 3011;
