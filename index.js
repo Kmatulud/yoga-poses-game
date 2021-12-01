@@ -5,10 +5,9 @@ const pg = require('pg');
 
 const app = express();
 
-const Pool = pg.Pool;
+// const Pool = pg.Pool;
 
-app.engine('handlebars', exphbs());
-app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
+app.engine('handlebars', exphbs({layoutsDir: "views/layouts/"}))
 app.set('view engine', 'handlebars');
 
 // initialising necessary middleware
