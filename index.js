@@ -1,4 +1,5 @@
 const express = require('express');
+const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 const exphbs = require('express-handlebars')
 const pg = require('pg');
@@ -14,15 +15,15 @@ app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json())
 
-app.get('/', function(req, res) {
+app.engine('handlebars', exphbs.engine({ defaultLayout: false }));
+app.set('view engine', 'handlebars');
 
-	res.render('index', {
-
-	});
+app.get('/', function (req, res) {
+  res.render('index', {});
 });
 
 //start everything up
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, function () {
-    console.log('App started at PORT: ', PORT);
+  console.log('App started at PORT: ', PORT);
 });
