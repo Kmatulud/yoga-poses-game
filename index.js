@@ -8,8 +8,10 @@ const app = express();
 const Pool = pg.Pool;
 
 // initialising necessary middleware
-app.engine('handlebars', exphbs({layoutsDir: "views/layouts/"}))
-app.set('view engine', 'handlebars')
+app.engine('handlebars', exphbs());
+app.engine('handlebars', exphbs({ layoutsDir: "views/layouts/" }));
+app.set('view engine', 'handlebars');
+
 app.use(express.static('public'))
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
