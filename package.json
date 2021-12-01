@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/Kmatulud/Red-Light-Green-Light#readme",
   "dependencies": {
+    "@tensorflow/tfjs": "^3.11.0",
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "express-flash": "0.0.2",
