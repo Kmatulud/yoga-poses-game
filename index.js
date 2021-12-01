@@ -1,5 +1,5 @@
 const express = require('express');
-const exphbs = require("express-handlebars");
+const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 const pg = require('pg');
 
@@ -7,14 +7,14 @@ const app = express();
 
 const Pool = pg.Pool;
 
-// initialising necessary middleware
 app.engine('handlebars', exphbs());
-app.engine('handlebars', exphbs({ layoutsDir: "views/layouts/" }));
+app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
-app.use(express.static('public'))
-app.use(express.urlencoded({ extended: false }))
-app.use(express.json())
+// initialising necessary middleware
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(express.static('public'));
 
 app.get('/', function (req, res) {
   res.render('index', {});
