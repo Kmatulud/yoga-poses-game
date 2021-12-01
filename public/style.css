@@ -1,7 +1,0 @@
-.main {
-    display: flex;
-}
-
-.main > * {
-    width: 50%;
-}

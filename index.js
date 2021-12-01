@@ -5,15 +5,15 @@ const pg = require('pg');
 
 const app = express();
 
-// const Pool = pg.Pool;
-
-app.engine('handlebars', exphbs({layoutsDir: "views/layouts/"}))
-app.set('view engine', 'handlebars');
+const Pool = pg.Pool;
 
 // initialising necessary middleware
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static('public'));
+
+app.engine('handlebars', exphbs.engine({ defaultLayout: 'main' }));
+app.set('view engine', 'handlebars');
 
 app.get('/', function (req, res) {
   res.render('index', {});
