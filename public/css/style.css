@@ -30,7 +30,3 @@ html {
 .text button:hover {
     background-color:#eee;
 }
-
-.container {
-    border-radius: 1em;
-}
