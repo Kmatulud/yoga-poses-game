@@ -11,6 +11,7 @@
         <h1>Yoga Poses App</h1>
         <h3>Let's do some yoga</h3>
         <button type='button' onclick='init()'>Start</button>
+        <button type='button' onclick='pauseWebCam()'>Pause</button>
       </div>
       <div><canvas id='canvas'></canvas></div>
       <div id='label-container'></div>
@@ -38,7 +39,7 @@
       maxPredictions = model.getTotalClasses(); 
       // Convenience function to setup a webcam 
       const size = 320; 
-      const flip = true; 
+      var flip = true; 
       // whether to flip the webcam 
       webcam = new tmPose.Webcam(size, size, flip); 
       // width,height, flip 
@@ -56,6 +57,14 @@
         } 
       } 
       
+      async function startWebCam() {
+        await webcam.play();
+      }
+
+      async function pauseWebCam() {
+        await webcam.pause();  
+      }
+
       async function loop(timestamp) { 
         webcam.update(); 
       // update the webcam frame
