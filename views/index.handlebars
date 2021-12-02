@@ -10,7 +10,10 @@
       <div class="text">
         <h1>Yoga Poses App</h1>
         <h3>Let's do some yoga</h3>
-        <button type='button' onclick='init()'>Start</button>
+        <div class="buttons">
+          <button type='button' onclick='init()'>Start</button>
+          <button type='button' class="hide" onclick='changeScreen()'>Next</button>
+        </div>
       </div>
       <div><canvas id='canvas'></canvas></div>
       <div id='label-container'></div>
@@ -31,6 +34,8 @@
       async function init() { 
         const modelURL = URL + "model.json"; 
         const metadataURL = URL + "metadata.json"; 
+        const slidebtn = document.querySelector('.hide')
+        slidebtn.style.display = 'inline-block'
       
       // load the modeland metadata // Refer to tmImage.loadFromFiles() in the API to support files from a file picker 
       // Note: the pose library adds a tmPose object toyour window (window.tmPose) 
@@ -69,9 +74,15 @@
       // Prediction2: run input through teachable machine classification model 
       const prediction = await model.predict(posenetOutput); 
       for (let i = 0; i <maxPredictions; i++) { 
-        const classPrediction = prediction[i].className + ": " + prediction[i].probability.toFixed(2);
-      labelContainer.childNodes[i].innerHTML = classPrediction; 
+        const classPrediction = prediction[i].className 
       } 
+      let maxPred = {className: "", probability: 0}
+      for(let i = 0; i < prediction.length; i++){
+        if(prediction[i].probability > maxPred.probability){
+          maxPred = prediction[i]
+        }
+        labelContainer.childNodes[0].innerHTML = maxPred.className; 
+      }
       // finally draw the poses 
       drawPose(pose); 
       } 
@@ -86,6 +97,27 @@
       tmPose.drawSkeleton(pose.keypoints, minPartConfidence, ctx); 
       } 
       } 
+      }
+
+      //slide
+      let i = 0
+      let images = []
+      images[0] = '/css/yoga1.jpeg'
+      images[1] = '/css/yoga2.jpeg'
+      images[2] = '/css/yoga3.png'
+      images[3] = '/css/yoga4.png'
+      images[4] = '/css/yoga5.png'
+
+      //change image
+      function changeScreen(){
+        const money = document.querySelector('.main')
+        money.style.backgroundImage = `url(${images[i]})`
+        if(i < images.length - 1){
+          i++
+        }else {
+          i = 0
+        }
+        console.log(money)
       }
     </script>
   </body>
