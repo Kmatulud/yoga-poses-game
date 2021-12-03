@@ -11,7 +11,7 @@
         <h1>Yoga Poses App</h1>
         <h3>Let's do some yoga</h3>
         <div class="buttons">
-          <button type='button' onclick='init()'>Start</button>
+          <button type='button' class="show" onclick='init()'>Start</button>
           <button type='button' class="hide" onclick='changeScreen()'>Next</button>
         </div>
       </div>
@@ -82,6 +82,10 @@
       const { pose,posenetOutput } = await model.estimatePose(webcam.canvas); 
       // Prediction2: run input through teachable machine classification model 
       const prediction = await model.predict(posenetOutput); 
+      //feedback
+      for(let i = 0; i < images.length; i++){
+        console.log(image[i])
+      }
       for (let i = 0; i <maxPredictions; i++) { 
         const classPrediction = prediction[i].className 
       } 
@@ -111,11 +115,14 @@
       //slide
       let i = 0
       let images = []
-      images[0] = '/css/yoga1.jpeg'
-      images[1] = '/css/yoga2.jpeg'
-      images[2] = '/css/yoga3.png'
-      images[3] = '/css/yoga4.png'
-      images[4] = '/css/yoga5.png'
+      images[0] = '/css/pose1.jpeg'
+      images[1] = '/css/pose2.jpeg'
+      images[2] = '/css/pose3.png'
+      images[3] = '/css/pose4.png'
+      images[4] = '/css/pose5.png'
+
+      const startbtn = document.querySelector('.show')
+      const imageURL1 = images[0].slice(4, images[0].length)
 
       //change image
       function changeScreen(){
@@ -123,13 +130,12 @@
         money.style.backgroundImage = `url(${images[i]})`
         if(i < images.length - 1){
           i++
+          startbtn.style.display = 'none'
         }else {
           i = 0
         }
-        console.log(money)
       }
 
-      window.onload('changeScreen', 1000)
     </script>
   </body>
 </html>
