@@ -96,7 +96,7 @@
         if(prediction[i].probability > maxPred.probability){
           maxPred = prediction[i]
         }
-        labelContainer.childNodes[0].innerHTML = maxPred.className; 
+        labelContainer.childNodes[0].innerHTML = 'You are doing the ' + maxPred.className + '. Hold for 5 seconds and press next for the next pose'; 
       }
       //feedback
       for(let i = 0; i < images.length; i++){
