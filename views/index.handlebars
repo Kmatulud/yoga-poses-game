@@ -6,11 +6,14 @@
     <title>Document</title>
   </head>
   <body>
+    <header class="heading">
+      <h1>Yoga Poses App</h1>
+      <h3>Let's do some yoga</h3>
+    </header>
     <div class='main'>
       <h1 class='feedback'></h1>
       <div class='text'>
-        <h1>Yoga Poses App</h1>
-        <h3>Let's do some yoga</h3>
+       
         <div class='buttons'>
           <button type='button' class='show' onclick='init()'>Start</button>
           <button
@@ -58,9 +61,13 @@
       await webcam.play(); 
       window.requestAnimationFrame(loop); 
       // append/get elements to the DOM 
-      const canvas = document.getElementById("canvas"); 
+      var canvas = document.getElementById("canvas"); 
       canvas.width = size; canvas.height = size; ctx = canvas.getContext("2d");
+      canvas.style.position = 'absolute';
+      canvas.style.top = "100px";
+      canvas.style.left = "50px"
       labelContainer = document.getElementById("label-container"); 
+
       for (let i = 0; i < maxPredictions; i++) { 
       // and class labels
       labelContainer.appendChild(document.createElement("div")); 

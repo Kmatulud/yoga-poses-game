@@ -20,7 +20,7 @@ app.get('/', function (req, res) {
 });
 
 //start everything up
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 300;
 app.listen(PORT, function () {
   console.log('App started at PORT: ', PORT);
 });

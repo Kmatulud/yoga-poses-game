@@ -10,6 +10,12 @@ html {
     -o-background-size: cover;
     background-size: cover;
   }
+
+  .heading {
+      color: #eee;
+      padding-top: 1em;
+  }
+
 .hide {
     display: none;
 }
@@ -20,10 +26,11 @@ html {
 
 #canvas {
     opacity: 0.7;
+    
 }
 
 .main {
-    background: no-repeat center center fixed; 
+    background: no-repeat right; 
     color: #eee;
     display: flex;
     flex-direction: column;
@@ -41,7 +48,13 @@ html {
     background-color:#eee;
 }
 
+#label-container {
+    color: black;
+    padding-top: 2em;
+}
+
 * {
     margin: 0;
     padding: 0;
 }
+
