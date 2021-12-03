@@ -6,19 +6,23 @@
     <title>Document</title>
   </head>
   <body>
-    <div class="main">
-      <h1 class="feedback"></h1>
-      <div class="text">
+    <div class='main'>
+      <h1 class='feedback'></h1>
+      <div class='text'>
         <h1>Yoga Poses App</h1>
         <h3>Let's do some yoga</h3>
-        <div class="buttons">
-          <button type='button' class="show" onclick='init()'>Start</button>
-          <button type='button' class="hide" onclick='changeScreen()'>Next</button>
+        <div class='buttons'>
+          <button type='button' class='show' onclick='init()'>Start</button>
+          <button
+            type='button'
+            class='hide'
+            onclick='changeScreen()'
+          >Next</button>
         </div>
       </div>
       <div><canvas id='canvas'></canvas></div>
       <div id='label-container'></div>
-    </div> 
+    </div>
     <script
       src='https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js'
     ></script>
