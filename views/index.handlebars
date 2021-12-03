@@ -95,17 +95,8 @@
         labelContainer.childNodes[0].innerHTML = maxPred.className; 
       }
       //feedback
-      let feedback = document.querySelector('.feedback')
       for(let i = 0; i < images.length; i++){
-        if(images[i].slice(5, 10) == maxPred.className.slice(5, maxPred.className.length)){
-          setTimeout(function(){
-            feedback.innerHTML = 'You got it. Hold for 3 seconds and press next'
-          }, 2000)
-        }else {
-          setTimeout(function(){
-            feedback.innerHTML = 'Keep trying. You got this'
-          }, 2000)
-        }
+        console.log(maxPred.className)
       }
       // finally draw the poses 
       drawPose(pose); 
