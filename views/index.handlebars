@@ -7,6 +7,7 @@
   </head>
   <body>
     <div class="main">
+      <h1 class="feedback"></h1>
       <div class="text">
         <h1>Yoga Poses App</h1>
         <h3>Let's do some yoga</h3>
@@ -82,10 +83,7 @@
       const { pose,posenetOutput } = await model.estimatePose(webcam.canvas); 
       // Prediction2: run input through teachable machine classification model 
       const prediction = await model.predict(posenetOutput); 
-      //feedback
-      for(let i = 0; i < images.length; i++){
-        console.log(image[i])
-      }
+      
       for (let i = 0; i <maxPredictions; i++) { 
         const classPrediction = prediction[i].className 
       } 
@@ -95,6 +93,19 @@
           maxPred = prediction[i]
         }
         labelContainer.childNodes[0].innerHTML = maxPred.className; 
+      }
+      //feedback
+      let feedback = document.querySelector('.feedback')
+      for(let i = 0; i < images.length; i++){
+        if(images[i].slice(5, 10) == maxPred.className.slice(5, maxPred.className.length)){
+          setTimeout(function(){
+            feedback.innerHTML = 'You got it. Hold for 3 seconds and press next'
+          }, 2000)
+        }else {
+          setTimeout(function(){
+            feedback.innerHTML = 'Keep trying. You got this'
+          }, 2000)
+        }
       }
       // finally draw the poses 
       drawPose(pose); 
@@ -116,10 +127,10 @@
       let i = 0
       let images = []
       images[0] = '/css/pose1.jpeg'
-      images[1] = '/css/pose2.jpeg'
-      images[2] = '/css/pose3.png'
+      images[1] = '/css/pose2.png'
+      images[2] = '/css/pose3.jpeg'
       images[3] = '/css/pose4.png'
-      images[4] = '/css/pose5.png'
+      images[4] = '/css/nopose.png'
 
       const startbtn = document.querySelector('.show')
       const imageURL1 = images[0].slice(4, images[0].length)
